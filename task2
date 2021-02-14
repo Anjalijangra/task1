@@ -1,0 +1,5 @@
+#python program to print positive numbers in given range
+x = [34,5,75,345,6,7,-45,-5,0,4]
+for num in list(x):
+ if num >= 0:
+  print(num,end=" ")
