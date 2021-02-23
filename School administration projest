@@ -1,0 +1,39 @@
+#"School Administration Project"
+import csv
+
+def write_into_csv(info_list):
+  with open("student_info.csv","a",newline="")as csv_file:
+    writer = csv.writer(csv_file)
+
+    if csv_file.tell()== 0:
+        writer.writerow(["Name", "Roll_no.", "Contact_no.", "Email_id"])
+
+    writer.writerow(info_list)
+if __name__== '__main__':       
+   condition = True
+   student_num = 1    
+
+   while(condition):
+     student_information = input("Enter the information in the following format (Name roll_no contact_no email_id):".format(student_num))
+     print("Entered information:" +student_information)
+
+  
+     student_information_list =  student_information.split(' ')
+    
+     print("\nThe Entered information is-\nName: {}\nRoll_no.: {}\nContact_no.: {}\nEmail_id: {} "
+           .format(student_information_list[0], student_information_list[1], student_information_list[2], student_information_list[3]))
+          
+     choice_check = input("Is the entered information is correct? (yes/no):")
+     if choice_check=="yes":
+        write_into_csv(student_information_list)
+
+        condition_check = input("Enter (yes/no) if you want to enter information for another student: ")
+         
+        if choice_check == "yes":
+            condition = True
+            student_num = student_num +1
+        elif choice_check == "no":
+            condition = False
+     elif choice_check == "no":
+        print("\nPlease re-enter the values!")
+   
